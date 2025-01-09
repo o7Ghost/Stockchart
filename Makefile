@@ -22,3 +22,16 @@ compile-client:
 compile-server:
 	@echo "Compiling server..."
 	cd ${SERVER_DIR} && ${MAVEN} clean compile
+
+# Start Client
+start-client:
+	@echo "starting client..."
+	cd $(CLIENT_DIR) && $(PNPM) dev
+
+# Start Server
+start-server:
+	@echo "starting server..."
+	cd ${SERVER_DIR} && ${MAVEN} spring-boot:run
+
+start: 
+	make -j2 start-client start-server
